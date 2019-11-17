@@ -8,19 +8,30 @@ public class Account
     String userAccountNumber = "";
     double userAccountBalance = 0;
 
-    public Account(String userName, String userSurname, String userPassword, String userAccountNumber)
+    public Account(String userName, String userSurname, String userPassword)
     {
         this.userName = userName;
         this.userSurname = userSurname;
         this.userPassword = userPassword;
-        this.userAccountNumber = userAccountNumber;
+        this.userAccountNumber = GetRandomAccountNumber();
         this.userAccountBalance = 0;
     }
 
-    public static String RandomAccountNumberGenerator()
+    public static String GetRandomAccountNumber()
     {
-        Random gen = new Random();
+        String constructedAccountNumber = "";
+        Random rand = new Random();
+
+        int firstTwoDecimals = rand.nextInt(40) + 10;
+
+        constructedAccountNumber += firstTwoDecimals;
         
-        return "";
+        for(int i = 0; i<=6; i++)
+        {
+            int nextFourDecimals = rand.nextInt(8999) + 1000;
+            constructedAccountNumber += " " + nextFourDecimals;
+        }
+
+        return constructedAccountNumber;
     }
 }
