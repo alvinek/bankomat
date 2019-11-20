@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
@@ -38,7 +37,7 @@ public class FileDriver {
 
         boolean success = false;
 
-        try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
+        try (PrintStream out = new PrintStream(file)) {
             out.println(constructString);
             out.flush();
             out.close();

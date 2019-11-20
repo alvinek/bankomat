@@ -43,8 +43,9 @@ public class Bank {
             String selectionString = "";
 
             if (scan.hasNextInt())
-                selectionString = scan.next(); // nie uzywam nextInt bo nie łyka entera
-
+                selectionString = scan.nextLine(); // nie uzywam nextInt bo nie łyka entera
+            
+            
             int selectionInt = Integer.parseInt(selectionString); // zamiast tego upewniam się z pomocą nextInt że to
                                                                   // int, a potem parsuje
 
@@ -77,10 +78,10 @@ public class Bank {
 
         while (true) {
             System.out.println("Podaj ID: ");
-            String id = scan.next();
+            String id = scan.nextLine();
 
             System.out.println("Podaj haslo: ");
-            String password = scan.next();
+            String password = scan.nextLine();
 
             for (Account acc : accountList) {
                 if (acc.userId.equals(id) && acc.userPassword.equals(password)) {
