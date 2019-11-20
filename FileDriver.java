@@ -9,57 +9,41 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FileDriver
-{
+public class FileDriver {
     private File file;
     private char seperator = ';';
 
-    public FileDriver(String fileLocation)
-    {
+    public FileDriver(String fileLocation) {
         file = new File(fileLocation);
     }
 
-    public boolean checkFileExist()
-    {
-        try
-        {
-            if(file.createNewFile())
-            {
+    public boolean checkFileExist() {
+        try {
+            if (file.createNewFile()) {
                 System.out.println("Utworzono nowy plik");
                 return false;
-            }
-            else
-            {
+            } else {
                 return true;
             }
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Wystapil problem z wczytywaniem pliku: " + e);
             return false;
         }
     }
 
-    public boolean saveAccount(Account account)
-    {
-        String constructString = 
-        account.userId + seperator + 
-        account.userName + seperator + 
-        account.userSurname + seperator + 
-        account.userPassword + seperator + 
-        account.userAccountNumber + seperator + 
-        account.userAccountBalance;
+    public boolean saveAccount(Account account) {
+        String constructString = account.userId + seperator + account.userName + seperator + account.userSurname
+                + seperator + account.userPassword + seperator + account.userAccountNumber + seperator
+                + account.userAccountBalance;
 
         boolean success = false;
 
-        try(PrintStream out = new PrintStream(new FileOutputStream(file))){
+        try (PrintStream out = new PrintStream(new FileOutputStream(file))) {
             out.println(constructString);
             out.flush();
             out.close();
             success = true;
-        }
-        catch(FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println("Wystapil blad przy zapisywaniu");
             success = false;
         }
@@ -67,15 +51,12 @@ public class FileDriver
         return success;
     }
 
-    public List<Account> readAccounts()
-    {
+    public List<Account> readAccounts() {
         List<String> linesFromFile = readLines();
         List<Account> linesParsed = new ArrayList<Account>();
 
-        for(String line : linesFromFile)
-        {
-            try
-            {
+        for (String line : linesFromFile) {
+            try {
                 String[] split = line.split(String.valueOf(seperator));
 
                 String userId = String.valueOf(split[0]);
@@ -87,9 +68,7 @@ public class FileDriver
 
                 Account account = new Account(userId, userName, userSurname, userPassword, userAccountNumber, balance);
                 linesParsed.add(account);
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println("Wystapil blad przy wczytywaniu danych z pliku: " + e);
             }
         }
@@ -97,21 +76,17 @@ public class FileDriver
         return linesParsed;
     }
 
-    public List<String> readLines()
-    {
-        try(Stream<String> lines = Files.lines(file.toPath())) {
+    public List<String> readLines() {
+        try (Stream<String> lines = Files.lines(file.toPath())) {
             return lines.collect(Collectors.toList());
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Nie udalo sie wczytac pliku: " + e);
         }
         return null;
     }
 
-    public File getFile()
-    {
+    public File getFile() {
         return file;
     }
-    
+
 }

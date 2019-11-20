@@ -1,7 +1,6 @@
 import java.util.Random;
 
-public class Account
-{
+public class Account {
     String userId = "";
     String userName = "";
     String userSurname = "";
@@ -9,8 +8,7 @@ public class Account
     String userAccountNumber = "";
     double userAccountBalance = 0;
 
-    public Account(String userName, String userSurname, String userPassword)
-    {
+    public Account(String userName, String userSurname, String userPassword) {
         this.userId = GetRandomUserId();
         this.userName = userName;
         this.userSurname = userSurname;
@@ -19,8 +17,8 @@ public class Account
         this.userAccountBalance = 0;
     }
 
-    public Account(String userId, String userName, String userSurname, String userPassword, String userAccountNumber, double userAccountBalance)
-    {
+    public Account(String userId, String userName, String userSurname, String userPassword, String userAccountNumber,
+            double userAccountBalance) {
         this.userId = userId;
         this.userName = userName;
         this.userSurname = userSurname;
@@ -29,17 +27,15 @@ public class Account
         this.userAccountBalance = userAccountBalance;
     }
 
-    public static String GetRandomAccountNumber()
-    {
+    public static String GetRandomAccountNumber() {
         String constructedAccountNumber = "";
         Random rand = new Random();
 
         int firstTwoDecimals = rand.nextInt(40) + 10;
 
         constructedAccountNumber += firstTwoDecimals;
-        
-        for(int i = 0; i<=6; i++)
-        {
+
+        for (int i = 0; i <= 6; i++) {
             int nextFourDecimals = rand.nextInt(8999) + 1000;
             constructedAccountNumber += " " + nextFourDecimals;
         }
@@ -47,8 +43,7 @@ public class Account
         return constructedAccountNumber;
     }
 
-    public static String GetRandomUserId()
-    {
+    public static String GetRandomUserId() {
         String constructedUserId = "";
 
         Random rand = new Random();
@@ -57,6 +52,6 @@ public class Account
 
         constructedUserId += randomUserId;
 
-        return constructedUserId; 
+        return constructedUserId;
     }
 }
