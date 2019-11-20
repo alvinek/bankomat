@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Account
 {
+    String userId = "";
     String userName = "";
     String userSurname = "";
     String userPassword = "";
@@ -10,6 +11,7 @@ public class Account
 
     public Account(String userName, String userSurname, String userPassword)
     {
+        this.userId = GetRandomUserId();
         this.userName = userName;
         this.userSurname = userSurname;
         this.userPassword = userPassword;
@@ -33,5 +35,18 @@ public class Account
         }
 
         return constructedAccountNumber;
+    }
+
+    public static String GetRandomUserId()
+    {
+        String constructedUserId = "";
+
+        Random rand = new Random();
+
+        int randomUserId = rand.nextInt(8999) + 1000;
+
+        constructedUserId += randomUserId;
+
+        return constructedUserId; 
     }
 }
