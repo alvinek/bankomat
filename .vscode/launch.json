@@ -12,9 +12,9 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-main<bankomat_5bed9025>",
+            "name": "Debug (Launch)-Init<bankomat_5bed9025>",
             "request": "launch",
-            "mainClass": "main",
+            "mainClass": "Init",
             "projectName": "bankomat_5bed9025"
         }
     ]

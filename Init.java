@@ -1,6 +1,9 @@
+import java.util.Scanner;
 
-class Main {
+class Init {
     static String fileDbName = "bank.txt";
+
+    static Scanner scanner = new Scanner(System.in);
 
     public static void ConsoleOut(String s)
     {
@@ -16,14 +19,14 @@ class Main {
 
         if(fileDriver.checkFileExist())
         {
-            Bank bank = new Bank(fileDriver, fileDriver.readAccounts());
+            Bank bank = new Bank(fileDriver, fileDriver.readAccounts(), scanner);
             bank.BankMain();
         }
         else
         {
-            Account newAccount = CreateAccount.CreateNewAccount();
+            Account newAccount = CreateAccount.CreateNewAccount(scanner);
             fileDriver.saveAccount(newAccount);
-            Bank bank = new Bank(fileDriver, fileDriver.readAccounts());
+            Bank bank = new Bank(fileDriver, fileDriver.readAccounts(), scanner);
             bank.BankMain();
         }
 

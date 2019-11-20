@@ -2,9 +2,8 @@ import java.util.Scanner;
 
 public class CreateAccount {
 
-    public static Account CreateNewAccount() {
-        Scanner scanner = new Scanner(System.in);
-
+    public static Account CreateNewAccount(Scanner scanner) 
+    {
         System.out.println("Witamy w BETA Bank! Prosze zaloz swoje konto");
         System.out.println("UWAGA! Kazdy srednik (;) zostanie zamieniony na spacje!");
 
@@ -28,6 +27,7 @@ public class CreateAccount {
 
         System.out.println("Utworzono konto: ");
 
+        System.out.println("Twoj login: " + account.userId);
         System.out.println("Imie: " + account.userName);
         System.out.println("Nazwisko: " + account.userSurname);
         System.out.println("Haslo: ####");
