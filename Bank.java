@@ -10,7 +10,6 @@ public class Bank
     {
         this.file = file;
         this.accountList = accounts;
-        BankMain();
     }
 
     public void BankMain()

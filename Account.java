@@ -19,6 +19,16 @@ public class Account
         this.userAccountBalance = 0;
     }
 
+    public Account(String userId, String userName, String userSurname, String userPassword, String userAccountNumber, double userAccountBalance)
+    {
+        this.userId = userId;
+        this.userName = userName;
+        this.userSurname = userSurname;
+        this.userPassword = userPassword;
+        this.userAccountNumber = userAccountNumber;
+        this.userAccountBalance = userAccountBalance;
+    }
+
     public static String GetRandomAccountNumber()
     {
         String constructedAccountNumber = "";

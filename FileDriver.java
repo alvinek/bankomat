@@ -74,8 +74,27 @@ public class FileDriver
 
         for(String line : linesFromFile)
         {
+            try
+            {
+                String[] split = line.split(String.valueOf(seperator));
 
+                String userId = String.valueOf(split[0]);
+                String userName = String.valueOf(split[1]);
+                String userSurname = String.valueOf(split[2]);
+                String userPassword = String.valueOf(split[3]);
+                String userAccountNumber = String.valueOf(split[4]);
+                double balance = Double.parseDouble(split[5]);
+
+                Account account = new Account(userId, userName, userSurname, userPassword, userAccountNumber, balance);
+                linesParsed.add(account);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Wystapil blad przy wczytywaniu danych z pliku: " + e);
+            }
         }
+
+        return linesParsed;
     }
 
     public List<String> readLines()
@@ -88,6 +107,11 @@ public class FileDriver
             System.out.println("Nie udalo sie wczytac pliku: " + e);
         }
         return null;
+    }
+
+    public File getFile()
+    {
+        return file;
     }
     
 }
