@@ -3,7 +3,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileDriver
 {
@@ -65,7 +69,25 @@ public class FileDriver
 
     public List<Account> readAccounts()
     {
-        
+        List<String> linesFromFile = readLines();
+        List<Account> linesParsed = new ArrayList<Account>();
+
+        for(String line : linesFromFile)
+        {
+
+        }
+    }
+
+    public List<String> readLines()
+    {
+        try(Stream<String> lines = Files.lines(file.toPath())) {
+            return lines.collect(Collectors.toList());
+        }
+        catch(IOException e)
+        {
+            System.out.println("Nie udalo sie wczytac pliku: " + e);
+        }
+        return null;
     }
     
 }
