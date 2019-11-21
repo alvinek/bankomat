@@ -9,6 +9,7 @@ public class Account {
     double userAccountBalance = 0;
 
     public Account(String userName, String userSurname, String userPassword) {
+ 
         this.userId = GetRandomUserId();
         this.userName = userName;
         this.userSurname = userSurname;
@@ -19,6 +20,7 @@ public class Account {
 
     public Account(String userId, String userName, String userSurname, String userPassword, String userAccountNumber,
             double userAccountBalance) {
+
         this.userId = userId;
         this.userName = userName;
         this.userSurname = userSurname;
@@ -27,7 +29,17 @@ public class Account {
         this.userAccountBalance = userAccountBalance;
     }
 
-    public static String GetRandomAccountNumber() {
+    public void setBalance(double balance)
+    {
+        this.userAccountBalance = balance;
+    }
+
+    public double getBalance()
+    {
+        return userAccountBalance;
+    }
+
+    private String GetRandomAccountNumber() {
         String constructedAccountNumber = "";
         Random rand = new Random();
 
@@ -43,7 +55,7 @@ public class Account {
         return constructedAccountNumber;
     }
 
-    public static String GetRandomUserId() {
+    private String GetRandomUserId() {
         String constructedUserId = "";
 
         Random rand = new Random();

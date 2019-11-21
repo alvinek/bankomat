@@ -1,7 +1,6 @@
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +36,19 @@ public class FileDriver {
 
         boolean success = false;
 
-        try (PrintStream out = new PrintStream(file)) {
-            out.println(constructString);
-            out.flush();
-            out.close();
+        try 
+        {
+            FileWriter fw = new FileWriter(file, true);
+
+            fw.write(constructString + System.lineSeparator());
+
+            fw.close();
+
             success = true;
-        } catch (FileNotFoundException e) {
-            System.out.println("Wystapil blad przy zapisywaniu");
+
+        }
+        catch (IOException e) {
+            System.out.println("Wystapil blad przy zapisywaniu " + e);
             success = false;
         }
 
@@ -82,6 +87,34 @@ public class FileDriver {
             System.out.println("Nie udalo sie wczytac pliku: " + e);
         }
         return null;
+    }
+
+    public void saveAccountsState(List<Account> accounts)
+    {
+        List<String> linesToSave = new ArrayList<String>();
+
+        for(Account account : accounts){
+            String temp = account.userId + seperator + account.userName + seperator + account.userSurname
+            + seperator + account.userPassword + seperator + account.userAccountNumber + seperator
+            + account.userAccountBalance;
+
+            linesToSave.add(temp);
+        }
+
+        try{
+            FileWriter fw = new FileWriter(file);
+            for(String line : linesToSave)
+            {
+                fw.write(line + System.lineSeparator());
+            }
+            fw.flush();
+            fw.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("Blad przy zapisywaniu do pliku " + e);
+        }
+
     }
 
     public File getFile() {
