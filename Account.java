@@ -10,11 +10,11 @@ public class Account {
 
     public Account(String userName, String userSurname, String userPassword) {
  
-        this.userId = GetRandomUserId();
+        this.userId = getRandomUserId();
         this.userName = userName;
         this.userSurname = userSurname;
         this.userPassword = userPassword;
-        this.userAccountNumber = GetRandomAccountNumber();
+        this.userAccountNumber = getRandomAccountNumber();
         this.userAccountBalance = 0;
     }
 
@@ -39,7 +39,7 @@ public class Account {
         return userAccountBalance;
     }
 
-    private String GetRandomAccountNumber() {
+    private String getRandomAccountNumber() {
         String constructedAccountNumber = "";
         Random rand = new Random();
 
@@ -55,7 +55,7 @@ public class Account {
         return constructedAccountNumber;
     }
 
-    private String GetRandomUserId() {
+    private String getRandomUserId() {
         String constructedUserId = "";
 
         Random rand = new Random();

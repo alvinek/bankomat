@@ -29,7 +29,7 @@ public class Bank {
                 break;
 
             if (currentUser == null) {
-                SignUpOrSignIn();
+                signUpOrSignIn();
                 continue;
             }
 
@@ -43,7 +43,7 @@ public class Bank {
                 System.out.println("Stan konta: " + currentUser.userAccountBalance + " zl");
             }
 
-            PrintMenu();
+            printMenu();
 
             String selectionString = "";
 
@@ -55,16 +55,16 @@ public class Bank {
 
             switch (selectionInt) {
             case 1:
-                BankInternal();
+                bankInternal();
                 break;
             case 2:
-                BankExternal();
+                bankExternal();
                 break;
             case 3:
-                ChargeAccount();
+                chargeAccount();
                 break;
             case 4:
-                AccountInfo();
+                accountInfo();
                 break;
             case 5:
                 currentUser = null;
@@ -83,7 +83,7 @@ public class Bank {
         System.exit(0);
     }
 
-    public void BankLogin() {
+    public void bankLogin() {
         currentUser = null;
         weSaidHello = false;
 
@@ -115,7 +115,7 @@ public class Bank {
         }
     }
 
-    public void SignUpOrSignIn() {
+    public void signUpOrSignIn() {
         System.out.println("1. Zaloguj sie");
         System.out.println("2. Zarejestruj sie");
         System.out.println("3. Wyjscie");
@@ -129,10 +129,10 @@ public class Bank {
 
         switch (userCaseInt) {
         case 1:
-            BankLogin();
+            bankLogin();
             break;
         case 2:
-            BankSignUp();
+            bankSignUp();
             break;
         case 3:
             userWantsExit = true;
@@ -145,8 +145,8 @@ public class Bank {
 
     }
 
-    public void BankSignUp() {
-        Account newAccount = CreateAccount.CreateNewAccount(scan);
+    public void bankSignUp() {
+        Account newAccount = CreateAccount.createNewAccount(scan);
         file.saveAccount(newAccount);
         reloadAccounts();
     }
@@ -155,7 +155,7 @@ public class Bank {
         accountList = file.readAccounts();
     }
 
-    public void PrintMenu() {
+    public void printMenu() {
         System.out.println("1. Wykonaj przelew wewnetrzny");
         System.out.println("2. Wykonaj przelew zewnetrzny");
         System.out.println("3. Doladuj konto");
@@ -164,7 +164,7 @@ public class Bank {
         System.out.println("5. Wyjscie");
     }
 
-    public void AccountInfo() {
+    public void accountInfo() {
         System.out.println("ID: " + currentUser.userId);
         System.out.println("Imie: " + currentUser.userName);
         System.out.println("Nazwisko: " + currentUser.userSurname);
@@ -172,7 +172,7 @@ public class Bank {
         System.out.println("Stan konta: " + currentUser.userAccountBalance);
     }
 
-    public void BankInternal() {
+    public void bankInternal() {
         System.out.println("ID uzytkownika, ktoremu chcesz zrobic przelew: ");
 
         String Id = "";
@@ -211,7 +211,7 @@ public class Bank {
         file.saveAccountsState(accountList);
     }
 
-    public void BankExternal() {
+    public void bankExternal() {
         System.out.println("Jaka sume chcesz przelac?");
 
         String moneyStr = "";
@@ -240,7 +240,7 @@ public class Bank {
 
     }
 
-    public void ChargeAccount() {
+    public void chargeAccount() {
         System.out.println("Jaka sume chcesz doladowac?:");
 
         String tempBalance = "";

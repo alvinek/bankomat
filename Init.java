@@ -20,7 +20,7 @@ class Init {
             Bank bank = new Bank(fileDriver, fileDriver.readAccounts(), scanner);
             bank.BankMain();
         } else {
-            Account newAccount = CreateAccount.CreateNewAccount(scanner);
+            Account newAccount = CreateAccount.createNewAccount(scanner);
             fileDriver.saveAccount(newAccount);
             Bank bank = new Bank(fileDriver, fileDriver.readAccounts(), scanner);
             bank.BankMain();
