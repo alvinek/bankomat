@@ -215,7 +215,8 @@ public class Bank {
         System.out.println("Jaka sume chcesz przelac?");
 
         String moneyStr = "";
-        if(scan.hasNextDouble()) moneyStr = scan.nextLine();
+        if (scan.hasNextDouble())
+            moneyStr = scan.nextLine();
         double money = Double.parseDouble(moneyStr);
 
         System.out.println("Numer konta:");
@@ -227,14 +228,11 @@ public class Bank {
         Pattern r = Pattern.compile(regex);
         Matcher m = r.matcher(accountNo);
 
-        if(m.matches())
-        {
-            updateBalance(currentUser.userId, currentUser.getBalance()-money);
+        if (m.matches()) {
+            updateBalance(currentUser.userId, currentUser.getBalance() - money);
             file.saveAccountsState(accountList);
             System.out.println("Srodki zostaly przelane");
-        }
-        else
-        {
+        } else {
             System.out.println("Podano niepoprawny numer konta, srodki nie zostana przelane");
         }
 

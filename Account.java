@@ -9,7 +9,7 @@ public class Account {
     double userAccountBalance = 0;
 
     public Account(String userName, String userSurname, String userPassword) {
- 
+
         this.userId = getRandomUserId();
         this.userName = userName;
         this.userSurname = userSurname;
@@ -29,13 +29,11 @@ public class Account {
         this.userAccountBalance = userAccountBalance;
     }
 
-    public void setBalance(double balance)
-    {
+    public void setBalance(double balance) {
         this.userAccountBalance = balance;
     }
 
-    public double getBalance()
-    {
+    public double getBalance() {
         return userAccountBalance;
     }
 
